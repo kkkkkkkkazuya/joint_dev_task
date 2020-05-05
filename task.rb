@@ -85,10 +85,12 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-  if foods || "うに"
-    puts "好物です"
-  else
-    puts "まぁまぁ好きです"
+  foods.each do |food|
+    if food.include?("うに")
+      puts "#{food}: 好物です"
+    else
+      puts "#{food}: まぁまぁ好きです"
+    end
   end
 end
 
@@ -113,7 +115,7 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  
+
 end
 
 def q14
