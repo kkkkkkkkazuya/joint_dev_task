@@ -193,15 +193,10 @@ class UserQ18
   end
 
   def introduce
-    if @age == 32
-      puts "こんにちは、#{@name}と申します。よろしくお願い致します。"
-    elsif @age == 10
-      puts "はいさいまいど〜、#{@name}です!!!"
-    end
-
+    puts @age >= 32 ? "こんにちは、あじーと申します。宜しくお願い致します。" : "はいさいまいど〜、ゆたぼんです！！！"
   end
-
 end
+
 
 def q18
   # ここは変更しないで下さい
@@ -214,6 +209,11 @@ end
 
 class Item
   # 以下を修正して下さい
+  attr_reader :name
+
+  def initialize(name:)
+    @name = name
+  end
 end
 
 def q19
@@ -222,14 +222,34 @@ def q19
   puts book.name
 end
 
+
+#年齢区分は，幼児(0〜5歳)，子供(6〜12歳)，成人(13〜64歳)，シニア(65〜120歳)
 class UserQ20
   # 以下に回答を記載
-
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 end
 
+#たまさんの入場料金は 0 円です。
+#ゆたぼんさんの入場料金は 400 円です。
+#あじーさんの入場料金は 800 円です。
+#ぎんさんの入場料金は 500 円です。
 class Zoo
   # 以下に回答を記載
+  def initialize(**params)
+    @name = params[:name]
+    @infant_price = params[:entry_fee][:infant]
+    @children_price = params[:entry_fee][:children]
+    @adult_price = params[:entry_fee][:adult]
+    @senior = params[:entry_fee][:senior]
+  end
 
+  def info_entry_fee(user)
+    info_entry_price = case user.age
+      
+  end
 end
 
 
