@@ -226,6 +226,7 @@ end
 #年齢区分は，幼児(0〜5歳)，子供(6〜12歳)，成人(13〜64歳)，シニア(65〜120歳)
 class UserQ20
   # 以下に回答を記載
+  attr_reader :name, :age
   def initialize(**params)
     @name = params[:name]
     @age = params[:age]
@@ -243,12 +244,23 @@ class Zoo
     @infant_price = params[:entry_fee][:infant]
     @children_price = params[:entry_fee][:children]
     @adult_price = params[:entry_fee][:adult]
-    @senior = params[:entry_fee][:senior]
+    @senior_price = params[:entry_fee][:senior]
   end
 
   def info_entry_fee(user)
     info_entry_price = case user.age
-      
+    when 0..5
+      @infant_price
+    when 6..12
+      @children_price
+    when 13..64
+      @adult_price
+    when 64..120
+      @senior_price
+    end
+
+    puts "#{user.name}さんの入場料は#{info_entry_price}円です。"
+
   end
 end
 
